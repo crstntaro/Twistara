@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twistara - Your Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fefaf4 0%, #e8f5e9 100%);
+      color: #1b5e20;
+    }
+
+    header {
+      background-color: #f4f4f4;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 40px;
+      border-radius: 6px;
+    }
+
+    .logo span {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #1b5e20;
+    }
+
+    .shop-btn {
+      background-color: #66bb6a;
+      color: white;
+      padding: 0.5rem 1.2rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background-color 0.3s;
+    }
+
+    .shop-btn:hover {
+      background-color: #4caf50;
+    }
+
+    .checkout {
+      max-width: 700px;
+      margin: 5rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .checkout h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .empty-text {
+      color: #777;
+      margin-top: 2rem;
+    }
+
+    /* Popup */
+    #popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border: 2px solid #66bb6a;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      text-align: center;
+      z-index: 9999;
+    }
+
+    #popup p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #popup button {
+      padding: 0.75rem 1.5rem;
+      background-color: #1b5e20;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 9998;
+    }
+  </style>
+</head>
+<body onload="showEmptyCartPopup()">
+
+<header>
+  <div class="logo">
+    <img src="logo.jpeg" alt="Twistara Logo">
+    <span>Twistara</span>
+  </div>
+  <a class="shop-btn" href="index.html">&larr; Back to Shop</a>
+</header>
+
+<div class="checkout">
+  <h2>Your Cart is Empty</h2>
+  <p class="empty-text">Add some Twistara magic to your cart by shopping our all-in-one beauty tools!</p>
+</div>
+
+<!-- Empty Cart Popup -->
+<div id="overlay"></div>
+<div id="popup">
+  <p><strong>Looks like you haven't added anything to your cart!</strong></p>
+  <button onclick="location.href='shop.html'">Proceed to Shop</button>
+</div>
+
+<script>
+  function showEmptyCartPopup() {
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

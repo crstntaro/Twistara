@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twistara - Eco Beauty Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #3e4b32;
+      background-color: #fffaf5;
+      overflow-x: hidden;
+    }
+
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background-color: #f4f1e8;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 40px;
+      border-radius: 6px;
+    }
+
+    .logo span {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #3e4b32;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #3e4b32;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #6b8b4d;
+    }
+
+    .cart-icon a {
+      color: #3e4b32;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .about {
+      background-color: #e6f4ea;
+    }
+
+    .about p {
+      text-align: justify;
+    }
+
+    .about-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .about h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: #4e6c41;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .social-icons a {
+      color: #3e4b32;
+      margin: 0 1rem;
+      transition: transform 0.2s, color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #6b8b4d;
+      transform: scale(1.2);
+    }
+
+    .mission-vision {
+      background-color: #f1f8f4;
+    }
+
+    .mv-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      justify-content: space-between;
+    }
+
+    .mission-box, .vision-box {
+      flex: 1 1 45%;
+      text-align: left;
+    }
+
+    .mission-box h2, .vision-box h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #6b8b4d;
+      padding-left: 1rem;
+    }
+
+    .mission-box p, .vision-box p {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .blog-section {
+      background-color: #f6eee3;
+    }
+
+    .blog-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+
+    .blog-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      padding: 2rem;
+      flex: 1 1 280px;
+      max-width: 300px;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #3e4b32;
+    }
+
+    .blog-card p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      text-decoration: none;
+      font-weight: bold;
+      color: #6b8b4d;
+      transition: color 0.3s;
+    }
+
+    .read-more:hover {
+      color: #8fa66a;
+    }
+
+    .product {
+      background-color: #fdfcf8;
+    }
+
+    .product-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      text-align: left;
+    }
+
+    .product-img {
+      flex: 1 1 40%;
+      text-align: center;
+    }
+
+    .product-img img {
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .product-content {
+      flex: 1 1 55%;
+    }
+
+    .product h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .product-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      color: #6b8b4d;
+    }
+
+    .product-content p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .product-content ul {
+      list-style: disc;
+      margin: 1rem 0 2rem 1.5rem;
+      padding: 0;
+    }
+
+    .product-content li {
+      margin-bottom: 0.75rem;
+    }
+
+    button {
+      background-color: #6b8b4d;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #4f6835;
+    }
+
+    footer {
+      background-color: #f4f1e8;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #3e4b32;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .mv-container,
+      .product-wrapper {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .product-content {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="sticky-header">
+  <div class="header-content">
+    <div class="logo">
+      <img src="logopng.png" alt="Twistara Logo" />
+      <span>Twistara</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="support.html">Help</a></li>
+      </ul>
+    </nav>
+    <div class="cart-icon">
+      <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <h2>About the Company</h2>
+  <div class="about-wrapper">
+    <div class="about-text">
+      <p>
+        <strong>Twistara</strong> was created through a partnership among five visionary entrepreneurs: 
+        <span class="highlight">Keith Docado, Jhanella Domingo, Steve Enriquez, Hanz Esmeria</span>, and 
+        <span class="highlight">Ariane Gabata</span>.
+      </p>
+      <p>
+        Each members brings unique expertise and skills to the company, contributing to its overall growth and success. All partners have equally shared responsibilities in managing the business, from product development and operations to marketing and financial planning. Their combined knowledge in entrepreneurship, sustainability, beauty trends, and customer relations ensures that Twistara remains innovative and competitive in the beauty industry. With a shared vision of promoting eco-friendly beauty solutions, the partners work collaboratively to uphold the company’s mission of reducing plastic waste while providing high-quality, sustainable makeup tools for modern consumers.
+      </p>
+      <p>
+        <em>The name</em> <strong>“Twistara”</strong> blends <strong>“twist”</strong> (creativity) and <strong>“aura”</strong> (natural beauty).
+      </p>
+      <p>
+        Through its <strong>All-in-One Detachable Makeup Brush</strong>, Twistara offers travel-friendly, eco-conscious beauty tools.
+      </p>
+    </div>
+
+    <div class="social-icons">
+      <a href="https://www.facebook.com/share/1HTECWFYuP/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      <a href="https://www.instagram.com/twistur_aura?igsh=MXIwMHRzcnl2eHdjNg==" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      <a href="https://www.tiktok.com/@twistara_co?_t=ZS-8wjZXNpxQQc&_r=1" target="_blank" aria-label="TikTok">
+        <i class="fab fa-tiktok fa-2x"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="mission-vision">
+  <div class="mv-container">
+    <div class="mission-box">
+      <h2>Our Mission</h2>
+      <p>To create innovative beauty solutions that enhance confidence, promote sustainability, and make routines joyful and effortless.</p>
+    </div>
+    <div class="vision-box">
+      <h2>Our Vision</h2>
+      <p>To be a leading name in the beauty tool industry through eco-friendly, convenient, and stylish solutions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="blog-section">
+  <div class="container">
+    <h2 class="blog-title">From Our Founders</h2>
+    <p class="blog-intro">Explore the heart and story behind Twistara.</p>
+    <div class="blog-cards">
+      <div class="blog-card">
+        <h3>Why Twistara</h3>
+        <p>Discover the inspiration and purpose behind our eco-beauty movement.</p>
+        <a href="blog-why.html" class="read-more">Read More →</a>
+      </div>
+      <div class="blog-card">
+        <h3>Watch the Product</h3>
+        <p>Watch how Twistara's All-in-One Makeup Brush simplifies your beauty routine.</p>
+        <a href="video-presentation.html" class="read-more">Watch Now →</a>
+      </div>
+      <div class="blog-card">
+        <h3>Meet the Team</h3>
+        <p>Get to know the passionate creators driving Twistara’s mission and vision.</p>
+        <a href="team.html" class="read-more">Meet Us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product" id="product">
+  <div class="product-wrapper">
+    <div class="product-img">
+      <img src="P1.png" alt="All-in-One Makeup Brush" />
+    </div>
+    <div class="product-content">
+      <h2>All-in-One Makeup Brush</h2>
+      <h3>One Brush. Endless Possibilities.</h3>
+      <p>
+        The <strong>All-In-One Makeup Brush</strong> is a travel-friendly tool designed to simplify and elevate your makeup routine.
+      </p>
+      <ul>
+        <li>Detachable heads for various makeup steps</li>
+        <li>Secure twist-lock design</li>
+        <li>Compact & eco-conscious</li>
+      </ul>
+      <p><strong>Price: ₱399</strong></p>
+      <button onclick="window.location.href='shop.html'">Buy Now</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <p>© Twistara • For Educational Purposes only.</p>
+    <a href="#">Back to top</a>
+  </p>
+</footer>
+
+</body>
+</html>

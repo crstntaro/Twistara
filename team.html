@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meet the Twistara Team</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fffaf5;
+      color: #3e4b32;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f4f1e8;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #6b8b4d;
+    }
+
+    .main-content {
+      flex: 1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      width: 250px;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #e6f4ea;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin: 0.25rem 0 0.2rem;
+      font-size: 1.1rem;
+      color: #3e4b32;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #6b8b4d;
+      font-weight: 500;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: #6b8b4d;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      color: #4e6c41;
+    }
+
+    .footer {
+      background-color: #f4f1e8;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .modal-content img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #e6f4ea;
+      margin-bottom: 1rem;
+    }
+
+    .modal-content h3 {
+      margin-bottom: 0.5rem;
+      color: #3e4b32;
+    }
+
+    .modal-content p {
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+      color: #6b8b4d;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Meet the Twistara Team</h1>
+</header>
+
+<main class="main-content">
+  <div class="container">
+    <div class="grid">
+      <!-- First row: 3 members -->
+      <div class="card" onclick="openModal('ari')">
+        <img src="ari.jpg" alt="Ariane Gabata">
+        <h3>Ariane Gabata</h3>
+        <p>General Manager</p>
+      </div>
+
+      <div class="card" onclick="openModal('hanz')">
+        <img src="hanz.jpg" alt="Hanz Esmeria">
+        <h3>Hanz Christian Esmeria</h3>
+        <p>Marketing Head</p>
+      </div>
+
+      <div class="card" onclick="openModal('jhanella')">
+        <img src="jhanella.jpg" alt="Jhanella Domingo">
+        <h3>Jhanella Domingo</h3>
+        <p>Admin / Finance Head</p>
+      </div>
+
+      <!-- Second row: 2 members centered -->
+      <div class="card" onclick="openModal('steve')">
+        <img src="steve.jpg" alt="Steve Enriquez">
+        <h3>Steve Nash Enriquez</h3>
+        <p>Operations & QC Head</p>
+      </div>
+
+      <div class="card" onclick="openModal('keith')">
+        <img src="keith.jpg" alt="Keith Docado">
+        <h3>Keith Smart Docado</h3>
+        <p>Admin Assistant</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a class="back-link" href="index.html">← Back to Home</a>
+    </div>
+  </div>
+</main>
+
+<div class="footer">
+  <p>© Twistara • For Educational Purposes only.</p>
+</div>
+
+<!-- MODALS -->
+<div id="modal-ari" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('ari')">&times;</span>
+    <img src="ari.jpg" alt="Ariane Gabata">
+    <h3>Ariane Gabata</h3>
+    <p><strong>General Manager</strong></p>
+    <p>Visionary leader and strategic mind guiding Twistara's direction and innovation.</p>
+  </div>
+</div>
+
+<div id="modal-hanz" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('hanz')">&times;</span>
+    <img src="hanz.jpg" alt="Hanz Esmeria">
+    <h3>Hanz Christian Esmeria</h3>
+    <p><strong>Marketing Head</strong></p>
+    <p>Creative powerhouse behind Twistara’s brand, voice, and marketing campaigns.</p>
+  </div>
+</div>
+
+<div id="modal-jhanella" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('jhanella')">&times;</span>
+    <img src="jhanella.jpg" alt="Jhanella Domingo">
+    <h3>Jhanella Domingo</h3>
+    <p><strong>Admin / Finance Head</strong></p>
+    <p>Handles internal operations and financial wellbeing of the company.</p>
+  </div>
+</div>
+
+<div id="modal-steve" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('steve')">&times;</span>
+    <img src="steve.jpg" alt="Steve Enriquez">
+    <h3>Steve Nash Enriquez</h3>
+    <p><strong>Operations & QC Head</strong></p>
+    <p>Ensures product quality and leads production efficiency for Twistara.</p>
+  </div>
+</div>
+
+<div id="modal-keith" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('keith')">&times;</span>
+    <img src="keith.jpg" alt="Keith Docado">
+    <h3>Keith Smart Docado</h3>
+    <p><strong>Admin Assistant</strong></p>
+    <p>Supports the admin team with documentation, logistics, and communication.</p>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('active');
+  }
+
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('active');
+  }
+</script>
+
+</body>
+</html>

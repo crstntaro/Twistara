@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twistara - Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(to bottom, #fefaf4 0%, #e8f5e9 100%);
+      color: #1b5e20;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background-color: #f4f4f4;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 40px;
+      border-radius: 6px;
+    }
+
+    .logo span {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #1b5e20;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #1b5e20;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #66bb6a;
+    }
+
+    .cart-icon a {
+      color: #1b5e20;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    /* Support Section */
+    .support {
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .support h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: #1b5e20;
+    }
+
+    .support ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .support li {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border-left: 5px solid #66bb6a;
+      background: #f4f4f4;
+      border-radius: 8px;
+    }
+
+    .support li strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      margin-top: 4rem;
+      background-color: #e8f5e9;
+      padding: 2rem;
+      border-radius: 20px;
+    }
+
+    .contact-form h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #1b5e20;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .contact-form input, .contact-form textarea {
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .contact-form button {
+      background-color: #66bb6a;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #4caf50;
+    }
+
+    /* Chatbot Button */
+    .chatbot-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #66bb6a;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 10000;
+    }
+
+    .chat-popup {
+  display: none; /* <-- make sure it's display: none */
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  overflow: hidden;
+  flex-direction: column;
+  z-index: 10000;
+}
+
+    .chat-header {
+      background-color: #1b5e20;
+      color: white;
+      padding: 1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .chat-body {
+      flex-grow: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background-color: #fefaf4;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bot-message, .user-message {
+      background-color: #e8f5e9;
+      margin: 0.5rem 0;
+      padding: 0.7rem 1rem;
+      border-radius: 15px;
+      max-width: 85%;
+      font-size: 0.95rem;
+    }
+
+    .bot-message {
+      background-color: #e8f5e9;
+      align-self: flex-start;
+    }
+
+    .user-message {
+      background-color: #66bb6a;
+      color: white;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    .typing {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 0.3rem;
+    }
+
+    .chat-input-area {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      border-top: 1px solid #ccc;
+      background-color: #fff;
+    }
+
+    .chat-input-area textarea {
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      font-family: inherit;
+      resize: none;
+      margin-bottom: 0.5rem;
+    }
+
+    .chat-input-area button {
+      background-color: #1b5e20;
+      color: white;
+      padding: 0.6rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      margin-top: 5rem;
+    }
+
+    footer a {
+      color: #1b5e20;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header class="sticky-header">
+  <div class="header-content">
+    <div class="logo">
+      <img src="logo.jpeg" alt="Twistara Logo" />
+      <span>Twistara</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="support.html">Help</a></li>
+      </ul>
+    </nav>
+    <div class="cart-icon">
+  <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
+</div>
+  </div>
+</header>
+
+<section class="support" id="support">
+  <h2>Customer Support & FAQs</h2>
+  <ul>
+    <li><strong>How do I clean the brush heads?</strong>Use mild soap and lukewarm water. Let them air dry before reattaching.</li>
+    <li><strong>Are the brush heads replaceable?</strong>Yes! You can order replacements to extend your brush’s life.</li>
+    <li><strong>Is this cruelty-free?</strong>Absolutely. No animal testing is involved.</li>
+    <li><strong>Is it safe to travel with?</strong>Yes! The compact and TSA-friendly design is perfect for your carry-on.</li>
+  </ul>
+
+  <div class="contact-form">
+    <h3>Still need help? Reach out!</h3>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="4" placeholder="Describe your issue..."></textarea>
+      <button type="submit" onclick="event.preventDefault(); alert('Thanks for reaching out! We’ll be in touch soon.')">Submit</button>
+    </form>
+  </div>
+</section>
+
+<!-- Chatbot Button -->
+<button class="chatbot-button" onclick="toggleChat()">💬</button>
+
+<!-- Chatbox -->
+<div class="chat-popup" id="chatPopup">
+  <div class="chat-header">Twistara Support</div>
+  <div class="chat-body" id="chatBody">
+    <!-- Messages will appear here -->
+  </div>
+  <div class="chat-input-area">
+    <textarea id="chatInput" placeholder="Type your message..." rows="2"></textarea>
+    <button onclick="sendUserMessage()">Send</button>
+  </div>
+</div>
+
+<footer>
+    <p>© Twistara • For Educational Purposes only.</p>
+  <p><a href="#">Back to top</a></p>
+</footer>
+
+<script>
+  function toggleChat() {
+    const popup = document.getElementById("chatPopup");
+    const body = document.getElementById("chatBody");
+
+    const isOpen = popup.style.display === "flex";
+    popup.style.display = isOpen ? "none" : "flex";
+
+    if (!isOpen && body.children.length === 0) {
+      // Show typing animation
+      const typing = document.createElement("div");
+      typing.className = "typing";
+      typing.textContent = "Twist bot is typing...";
+      typing.id = "typingMsg";
+      body.appendChild(typing);
+      body.scrollTop = body.scrollHeight;
+
+      // After delay, show welcome message
+      setTimeout(() => {
+        typing.remove();
+        const botMsg = document.createElement("div");
+        botMsg.className = "bot-message";
+        botMsg.textContent = "Welcome! I am Twist bot and I will be of guidance in connecting you to our representative for your inquiries!";
+        body.appendChild(botMsg);
+        body.scrollTop = body.scrollHeight;
+      }, 1300);
+    }
+  }
+
+  function sendUserMessage() {
+    const input = document.getElementById("chatInput");
+    const body = document.getElementById("chatBody");
+    const msg = input.value.trim();
+    if (msg === "") return;
+
+    const userMsg = document.createElement("div");
+    userMsg.className = "user-message";
+    userMsg.textContent = msg;
+    body.appendChild(userMsg);
+    input.value = "";
+    body.scrollTop = body.scrollHeight;
+
+    const typing = document.createElement("div");
+    typing.className = "typing";
+    typing.textContent = "Twist bot is typing...";
+    typing.id = "typingMsg";
+    body.appendChild(typing);
+    body.scrollTop = body.scrollHeight;
+
+    setTimeout(() => {
+      typing.remove();
+      const botReply = document.createElement("div");
+      botReply.className = "bot-message";
+      botReply.textContent = "Our employee representative will be with you shortly.";
+      body.appendChild(botReply);
+      body.scrollTop = body.scrollHeight;
+    }, 1500);
+  }
+</script>
+</body>
+</html>

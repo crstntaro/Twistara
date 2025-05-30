@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twistara - Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #1b5e20;
+      background: #c8e6c9;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background-color: #f4f4f4;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 40px;
+      border-radius: 6px;
+    }
+
+    .logo span {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #1b5e20;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #1b5e20;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #66bb6a;
+    }
+
+    .cart-icon a {
+      color: #1b5e20;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    /* Product Section */
+    .shop-section {
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .shop-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1b5e20;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #4caf50;
+      margin-bottom: 2rem;
+    }
+
+    .product-showcase {
+      background-color: #ffffff;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      max-width: 1000px;
+      margin: 0 auto;
+      border-left: 8px solid #66bb6a;
+    }
+
+    .product-collage {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .product-collage img {
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      max-width: 280px;
+      width: 100%;
+    }
+
+    .product-description {
+      max-width: 800px;
+      margin: 2rem auto 1rem;
+      text-align: center;
+    }
+
+    .product-description p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #388e3c;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      background-color: #66bb6a;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      transition: background 0.3s;
+      font-size: 1rem;
+    }
+
+    .cta-button:hover {
+      background-color: #4caf50;
+    }
+
+    /* Popup */
+    .popup, .overlay {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+    }
+
+    .overlay {
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .popup {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .popup p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .popup .checkout-btn {
+      background-color: #1b5e20;
+      color: white;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .popup .checkout-btn:hover {
+      background-color: #388e3c;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: #1b5e20;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .product-collage {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-showcase {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="sticky-header">
+  <div class="header-content">
+    <div class="logo">
+      <img src="logo.jpeg" alt="Twistara Logo" />
+      <span>Twistara</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="support.html">Help</a></li>
+      </ul>
+    </nav>
+    <div class="cart-icon">
+  <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
+</div>
+  </div>
+</header>
+
+<section class="shop-section">
+  <h2>All-in-One Makeup Brush</h2>
+  <p class="tagline">The only brush you’ll ever need. Beautiful. Practical. Planet-friendly.</p>
+
+  <div class="product-showcase">
+    <div class="product-collage">
+      <img src="P1.png" alt="Front View" />
+      <img src="P2.jpeg" alt="In Use" />
+      <img src="P3.png" alt="Detachable Heads" />
+    </div>
+
+    <div class="product-description">
+      <p>The All-In-One Makeup Brush is your entire glam routine in one sleek stick. Snap on the head you need — from foundation to highlight — and glow on the go.</p>
+      <p>Perfect for home, travel, and touch-ups. Cut clutter. Upgrade your kit. And love the planet while you're at it.</p>
+      <p class="price">₱399</p>
+      <button class="cta-button" onclick="showPopup()">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<!-- Popup -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+  <p>🎉 Added to Cart!</p>
+  <button class="checkout-btn" onclick="location.href='cart.html'">Proceed to Checkout →</button>
+</div>
+
+<footer>
+    <p>© Twistara • For Educational Purposes only.</p>
+  <p><a href="#">Back to top</a></p>
+</footer>
+
+<script>
+  function showPopup() {
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
