@@ -14,12 +14,14 @@
       font-family: 'Poppins', sans-serif;
       background-color: #fffaf5;
       color: #3e4b32;
+      scroll-behavior: smooth;
     }
 
     header {
       text-align: center;
       padding: 2rem;
       background-color: #f4f1e8;
+      animation: fadeSlideDown 0.6s ease;
     }
 
     header h1 {
@@ -36,6 +38,7 @@
       max-width: 1200px;
       margin: auto;
       padding: 2rem;
+      animation: fadeIn 1s ease;
     }
 
     .grid {
@@ -52,13 +55,13 @@
       text-align: center;
       padding: 1.5rem 1rem;
       width: 250px;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
     }
 
     .card img {
@@ -89,6 +92,7 @@
       text-decoration: none;
       color: #6b8b4d;
       font-weight: 600;
+      transition: color 0.3s;
     }
 
     .back-link:hover {
@@ -116,6 +120,7 @@
 
     .modal.active {
       display: flex;
+      animation: fadeIn 0.4s ease;
     }
 
     .modal-content {
@@ -127,6 +132,7 @@
       text-align: center;
       position: relative;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      animation: zoomIn 0.3s ease;
     }
 
     .modal-content img {
@@ -167,43 +173,64 @@
         max-width: 300px;
       }
     }
+
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .twist {
+      color: #4caf50;
+      font-weight: 800;
+      text-shadow: 0 0 6px rgba(102, 187, 106, 0.3);
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 6px rgba(102, 187, 106, 0.2); }
+      to { text-shadow: 0 0 14px rgba(102, 187, 106, 0.6); }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Meet the Twistara Team</h1>
+  <h1>Meet the <span class="twist">Twist</span>ara Team</h1>
 </header>
 
 <main class="main-content">
   <div class="container">
     <div class="grid">
-      <!-- First row: 3 members -->
       <div class="card" onclick="openModal('ari')">
         <img src="ari.jpg" alt="Ariane Gabata">
         <h3>Ariane Gabata</h3>
         <p>General Manager</p>
       </div>
-
       <div class="card" onclick="openModal('hanz')">
         <img src="hanz.jpg" alt="Hanz Esmeria">
         <h3>Hanz Christian Esmeria</h3>
         <p>Marketing Head</p>
       </div>
-
       <div class="card" onclick="openModal('jhanella')">
         <img src="jhanella.jpg" alt="Jhanella Domingo">
         <h3>Jhanella Domingo</h3>
         <p>Admin / Finance Head</p>
       </div>
-
-      <!-- Second row: 2 members centered -->
       <div class="card" onclick="openModal('steve')">
         <img src="steve.jpg" alt="Steve Enriquez">
         <h3>Steve Nash Enriquez</h3>
         <p>Operations & QC Head</p>
       </div>
-
       <div class="card" onclick="openModal('keith')">
         <img src="keith.jpg" alt="Keith Docado">
         <h3>Keith Smart Docado</h3>
@@ -212,7 +239,7 @@
     </div>
 
     <div style="text-align:center;">
-      <a class="back-link" href="index.html">← Back to Home</a>
+      <a class="back-link" href="about.html">← Back to Home</a>
     </div>
   </div>
 </main>

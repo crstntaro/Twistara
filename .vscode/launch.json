@@ -8,8 +8,16 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open Twistara.html",
+            "name": "Twistara",
             "file": "d:\\Twistara\\index.html"
+        }
+
+        {
+
+            "type": "chrome",
+            "request": "launch",
+            "name": "Bambrella",
+            "file": "d:\\Bambrella\\index.html"
         }
     ]
 }

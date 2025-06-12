@@ -18,15 +18,21 @@
       color: #1b5e20;
       background: #c8e6c9;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    /* Header */
     .sticky-header {
       position: sticky;
       top: 0;
       background-color: #f4f4f4;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       z-index: 1000;
+      animation: dropIn 0.6s ease-out;
+    }
+
+    @keyframes dropIn {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .header-content {
@@ -51,6 +57,18 @@
       font-weight: 800;
       font-size: 1.3rem;
       color: #1b5e20;
+    }
+
+    .logo span .twist {
+      color: #4caf50;
+      font-weight: 800;
+      text-shadow: 0 0 6px rgba(102, 187, 106, 0.3);
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 6px rgba(102, 187, 106, 0.2); }
+      to { text-shadow: 0 0 14px rgba(102, 187, 106, 0.6); }
     }
 
     nav ul {
@@ -78,10 +96,15 @@
       text-decoration: none;
     }
 
-    /* Product Section */
     .shop-section {
       padding: 6rem 2rem 4rem;
       text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .shop-section h2 {
@@ -105,6 +128,11 @@
       max-width: 1000px;
       margin: 0 auto;
       border-left: 8px solid #66bb6a;
+      transition: transform 0.3s ease;
+    }
+
+    .product-showcase:hover {
+      transform: scale(1.01);
     }
 
     .product-collage {
@@ -120,6 +148,11 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.1);
       max-width: 280px;
       width: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .product-collage img:hover {
+      transform: scale(1.05);
     }
 
     .product-description {
@@ -149,15 +182,15 @@
       cursor: pointer;
       padding: 0.8rem 2rem;
       border-radius: 30px;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s ease;
       font-size: 1rem;
     }
 
     .cta-button:hover {
       background-color: #4caf50;
+      transform: scale(1.05);
     }
 
-    /* Popup */
     .popup, .overlay {
       display: none;
       position: fixed;
@@ -170,6 +203,7 @@
       width: 100vw;
       height: 100vh;
       background: rgba(0,0,0,0.4);
+      animation: fadeIn 0.3s ease;
     }
 
     .popup {
@@ -181,6 +215,12 @@
       border-radius: 10px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.2);
       text-align: center;
+      animation: popupFade 0.4s ease;
+    }
+
+    @keyframes popupFade {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
     }
 
     .popup p {
@@ -196,13 +236,13 @@
       border-radius: 30px;
       border: none;
       cursor: pointer;
+      transition: background 0.3s;
     }
 
     .popup .checkout-btn:hover {
       background-color: #388e3c;
     }
 
-    /* Footer */
     footer {
       background-color: #f4f4f4;
       text-align: center;
@@ -242,25 +282,25 @@
 
 <header class="sticky-header">
   <div class="header-content">
-    <div class="logo">
-      <img src="logo.jpeg" alt="Twistara Logo" />
-      <span>Twistara</span>
-    </div>
+    <a href="index.html" class="logo">
+      <img src="logopng.png" alt="Twistara Logo" />
+      <span><span class="twist">Twist</span>ara</span>
+    </a>
     <nav>
       <ul>
-        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="about.html">About Us</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li><a href="support.html">Help</a></li>
       </ul>
     </nav>
     <div class="cart-icon">
-  <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
-</div>
+      <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
+    </div>
   </div>
 </header>
 
 <section class="shop-section">
-  <h2>All-in-One Makeup Brush</h2>
+  <h2>All-in-One Detachable Makeup Brush</h2>
   <p class="tagline">The only brush you’ll ever need. Beautiful. Practical. Planet-friendly.</p>
 
   <div class="product-showcase">
@@ -271,9 +311,9 @@
     </div>
 
     <div class="product-description">
-      <p>The All-In-One Makeup Brush is your entire glam routine in one sleek stick. Snap on the head you need — from foundation to highlight — and glow on the go.</p>
+      <p>The All-In-One Detachable Makeup Brush is your entire glam routine in one sleek stick. Snap on the head you need — from foundation to highlight — and glow on the go.</p>
       <p>Perfect for home, travel, and touch-ups. Cut clutter. Upgrade your kit. And love the planet while you're at it.</p>
-      <p class="price">₱399</p>
+      <p class="price">₱330</p>
       <button class="cta-button" onclick="showPopup()">Add to Cart</button>
     </div>
   </div>
@@ -287,7 +327,7 @@
 </div>
 
 <footer>
-    <p>© Twistara • For Educational Purposes only.</p>
+  <p>© Twistara • For Educational Purposes only.</p>
   <p><a href="#">Back to top</a></p>
 </footer>
 

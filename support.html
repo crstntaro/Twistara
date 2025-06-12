@@ -18,15 +18,21 @@
       background: linear-gradient(to bottom, #fefaf4 0%, #e8f5e9 100%);
       color: #1b5e20;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    /* Header */
     .sticky-header {
       position: sticky;
       top: 0;
       background-color: #f4f4f4;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       z-index: 1000;
+      animation: dropIn 0.6s ease-out;
+    }
+
+    @keyframes dropIn {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .header-content {
@@ -51,6 +57,18 @@
       font-weight: 800;
       font-size: 1.3rem;
       color: #1b5e20;
+    }
+
+    .logo span .twist {
+      color: #4caf50;
+      font-weight: 800;
+      text-shadow: 0 0 6px rgba(102, 187, 106, 0.3);
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 6px rgba(102, 187, 106, 0.2); }
+      to { text-shadow: 0 0 14px rgba(102, 187, 106, 0.6); }
     }
 
     nav ul {
@@ -78,7 +96,6 @@
       text-decoration: none;
     }
 
-    /* Support Section */
     .support {
       padding: 5rem 2rem;
       max-width: 900px;
@@ -86,6 +103,12 @@
       background: #ffffff;
       border-radius: 20px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .support h2 {
@@ -114,7 +137,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Contact Form */
     .contact-form {
       margin-top: 4rem;
       background-color: #e8f5e9;
@@ -159,7 +181,6 @@
       background-color: #4caf50;
     }
 
-    /* Chatbot Button */
     .chatbot-button {
       position: fixed;
       bottom: 20px;
@@ -174,22 +195,35 @@
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       z-index: 10000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(102, 187, 106, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(102, 187, 106, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(102, 187, 106, 0); }
     }
 
     .chat-popup {
-  display: none; /* <-- make sure it's display: none */
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 320px;
-  height: 500px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  overflow: hidden;
-  flex-direction: column;
-  z-index: 10000;
-}
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      height: 500px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      overflow: hidden;
+      flex-direction: column;
+      z-index: 10000;
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     .chat-header {
       background-color: #1b5e20;
@@ -209,7 +243,6 @@
     }
 
     .bot-message, .user-message {
-      background-color: #e8f5e9;
       margin: 0.5rem 0;
       padding: 0.7rem 1rem;
       border-radius: 15px;
@@ -226,7 +259,6 @@
       background-color: #66bb6a;
       color: white;
       align-self: flex-end;
-      margin-left: auto;
     }
 
     .typing {
@@ -262,7 +294,6 @@
       cursor: pointer;
     }
 
-    /* Footer */
     footer {
       background-color: #f4f4f4;
       text-align: center;
@@ -286,20 +317,20 @@
 
 <header class="sticky-header">
   <div class="header-content">
-    <div class="logo">
-      <img src="logo.jpeg" alt="Twistara Logo" />
-      <span>Twistara</span>
-    </div>
+    <a href="index.html" class="logo">
+      <img src="logopng.png" alt="Twistara Logo" />
+      <span><span class="twist">Twist</span>ara</span>
+    </a>
     <nav>
       <ul>
-        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="about.html">About Us</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li><a href="support.html">Help</a></li>
       </ul>
     </nav>
     <div class="cart-icon">
-  <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
-</div>
+      <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
+    </div>
   </div>
 </header>
 
@@ -323,15 +354,11 @@
   </div>
 </section>
 
-<!-- Chatbot Button -->
 <button class="chatbot-button" onclick="toggleChat()">💬</button>
 
-<!-- Chatbox -->
 <div class="chat-popup" id="chatPopup">
   <div class="chat-header">Twistara Support</div>
-  <div class="chat-body" id="chatBody">
-    <!-- Messages will appear here -->
-  </div>
+  <div class="chat-body" id="chatBody"></div>
   <div class="chat-input-area">
     <textarea id="chatInput" placeholder="Type your message..." rows="2"></textarea>
     <button onclick="sendUserMessage()">Send</button>
@@ -339,7 +366,7 @@
 </div>
 
 <footer>
-    <p>© Twistara • For Educational Purposes only.</p>
+  <p>© Twistara • For Educational Purposes only.</p>
   <p><a href="#">Back to top</a></p>
 </footer>
 
@@ -352,7 +379,6 @@
     popup.style.display = isOpen ? "none" : "flex";
 
     if (!isOpen && body.children.length === 0) {
-      // Show typing animation
       const typing = document.createElement("div");
       typing.className = "typing";
       typing.textContent = "Twist bot is typing...";
@@ -360,7 +386,6 @@
       body.appendChild(typing);
       body.scrollTop = body.scrollHeight;
 
-      // After delay, show welcome message
       setTimeout(() => {
         typing.remove();
         const botMsg = document.createElement("div");

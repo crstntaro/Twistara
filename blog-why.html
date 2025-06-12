@@ -12,13 +12,15 @@
       background-color: #fffaf5;
       color: #3e4b32;
       line-height: 1.7;
+      scroll-behavior: smooth;
     }
 
     header {
       background-color: #f4f1e8;
-      padding: 1.5rem 2rem;
+      padding: 2rem;
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      animation: fadeSlideDown 0.6s ease;
     }
 
     header h1 {
@@ -31,6 +33,7 @@
       max-width: 1000px;
       margin: auto;
       padding: 2rem;
+      animation: fadeIn 1s ease;
     }
 
     section {
@@ -41,6 +44,7 @@
       color: #6b8b4d;
       margin-bottom: 1rem;
       font-size: 1.75rem;
+      position: relative;
     }
 
     ul {
@@ -56,6 +60,11 @@
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .process-steps:hover {
+      transform: scale(1.01);
     }
 
     .materials {
@@ -63,10 +72,16 @@
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .materials:hover {
+      transform: scale(1.01);
     }
 
     .materials ul {
       columns: 2;
+      column-gap: 2rem;
     }
 
     .footer {
@@ -83,23 +98,55 @@
       text-decoration: none;
       color: #6b8b4d;
       font-weight: 600;
+      transition: color 0.3s;
     }
 
     a.back-link:hover {
       color: #4e6c41;
     }
 
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 768px) {
       .materials ul {
         columns: 1;
       }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Twist emphasis if branding ever appears */
+    .twist {
+      color: #4caf50;
+      font-weight: 800;
+      text-shadow: 0 0 6px rgba(102, 187, 106, 0.3);
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 6px rgba(102, 187, 106, 0.2); }
+      to { text-shadow: 0 0 14px rgba(102, 187, 106, 0.6); }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Why Twistara?</h1>
+  <h1>Why <span class="twist">Twist</span>ara?</h1>
 </header>
 
 <div class="container">
@@ -140,7 +187,7 @@
     </ul>
   </section>
 
-  <a href="index.html" class="back-link">← Back to Home</a>
+  <a href="about.html" class="back-link">← Back to Home</a>
 </div>
 
 <div class="footer">

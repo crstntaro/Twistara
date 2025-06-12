@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Twistara - Your Cart</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, #fefaf4 0%, #e8f5e9 100%);
+      background: linear-gradient(to bottom, #fefaf4, #e8f5e9);
       color: #1b5e20;
     }
 
@@ -23,6 +23,7 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      animation: fadeSlideDown 0.6s ease;
     }
 
     .logo {
@@ -49,11 +50,12 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 30px;
-      transition: background-color 0.3s;
+      transition: transform 0.3s, background-color 0.3s;
     }
 
     .shop-btn:hover {
       background-color: #4caf50;
+      transform: scale(1.05);
     }
 
     .checkout {
@@ -64,6 +66,7 @@
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
       text-align: center;
+      animation: fadeInUp 0.8s ease;
     }
 
     .checkout h2 {
@@ -74,23 +77,24 @@
     .empty-text {
       color: #777;
       margin-top: 2rem;
+      font-size: 1.05rem;
     }
 
-    /* Popup */
     #popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      border: 2px solid #66bb6a;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      text-align: center;
-      z-index: 9999;
-    }
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1); /* combine center + scale */
+  background-color: white;
+  border: 2px solid #66bb6a;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-align: center;
+  z-index: 9999;
+  animation: scaleBounce 0.4s ease;
+}
 
     #popup p {
       font-size: 1.1rem;
@@ -115,33 +119,53 @@
       background: rgba(0, 0, 0, 0.4);
       z-index: 9998;
     }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleBounce {
+  0%   { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  60%  { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
   </style>
 </head>
 <body onload="showEmptyCartPopup()">
 
 <header>
-  <div class="logo">
-    <img src="logo.jpeg" alt="Twistara Logo">
-    <span>Twistara</span>
-  </div>
+  <a href="index.html" class="logo">
+      <img src="logopng.png" alt="Twistara Logo" />
+      <span><span class="twist">Twist</span>ara</span>
+    </a>
   <a class="shop-btn" href="index.html">&larr; Back to Shop</a>
 </header>
 
 <div class="checkout">
   <h2>Your Cart is Empty</h2>
-  <p class="empty-text">Add some Twistara magic to your cart by shopping our all-in-one beauty tools!</p>
+  <p class="empty-text">Add a little twist to your routine — start shopping now!</p>
 </div>
 
-<!-- Empty Cart Popup -->
 <div id="overlay"></div>
 <div id="popup">
-  <p><strong>Looks like you haven't added anything to your cart!</strong></p>
-  <button onclick="location.href='shop.html'">Proceed to Shop</button>
+  <p><strong>Your cart is still empty! Time to shop some beauty essentials 🌿</strong></p>
+  <button onclick="location.href='shop.html'">Go to Shop</button>
 </div>
 
 <script>
   function showEmptyCartPopup() {
-    document.getElementById('popup').style.display = 'block';
+    const popup = document.getElementById('popup');
+    popup.style.animation = 'none';
+    void popup.offsetWidth;
+    popup.style.animation = 'scaleBounce 0.4s ease';
+
+    popup.style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
   }
 </script>

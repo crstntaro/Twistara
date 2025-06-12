@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Watch the Product - Twistara</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fffaf5 0%, #e6f4ea 100%);
+      color: #3e4b32;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #f4f1e8;
+      padding: 2.5rem 1rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      animation: fadeSlideDown 0.6s ease-out;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      color: #6b8b4d;
+    }
+
+    header h1 .twist {
+      color: #4caf50;
+      font-weight: 800;
+      animation: glow 2s ease-in-out infinite alternate;
+      text-shadow: 0 0 6px rgba(102, 187, 106, 0.3);
+    }
+
+    main {
+      flex: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .video-wrapper {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .video-wrapper:hover {
+      transform: scale(1.01);
+    }
+
+    video {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    video:hover {
+      transform: scale(1.01);
+    }
+
+    .description {
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      color: #4e6c41;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    a.back-link {
+      display: inline-block;
+      margin-top: 2.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #6b8b4d;
+      padding: 0.6rem 1.2rem;
+      border: 2px solid #6b8b4d;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    a.back-link:hover {
+      background-color: #6b8b4d;
+      color: white;
+    }
+
+    footer {
+      background-color: #f4f1e8;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 6px rgba(102, 187, 106, 0.2); }
+      to { text-shadow: 0 0 14px rgba(102, 187, 106, 0.5); }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      .video-wrapper {
+        padding: 1.25rem;
+      }
+
+      .description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Watch the <span class="twist">Twist</span>ara Brush in Action</h1>
+</header>
+
+<main>
+  <div class="video-wrapper">
+    <video controls>
+      <source src="twistara-product.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <p class="description">
+      ✨ See how the All-in-One Detachable Makeup Brush brings together sustainability and beauty. From foundation to highlight, it's your complete routine in one smooth twist. 🌱
+    </p>
+    <a class="back-link" href="about.html">← Back to Home</a>
+  </div>
+</main>
+
+<footer>
+  <p>© Twistara • For Educational Purposes only.</p>
+</footer>
+
+</body>
+</html>
